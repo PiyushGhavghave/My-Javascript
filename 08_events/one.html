@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events</title>
+</head>
+<body style="background-color: #414141; color :white">
+    <h2>Amazing image</h2>
+    <div >
+        <ul id="images">
+            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
+            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" ></li>
+            <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+   </div>
+</body>
+<script>
+    //types of events
+    //timestamp, defaultPrevent
+    //target, toElement, srcElemnt, currentTarget
+    //clientX, clientY, screenX, screenY
+    //altKey, ctrlKey ,shiftkey, keyCode
+    
+    //***************** onclick event  (old method) ***********
+    document.getElementById("owl").onclick = function(){
+        //alert("owl clicked using onclick")
+    }
+
+    //attachEvent
+    //jQuery
+
+
+    //**************** event listener ****************
+
+    //e => event object
+    document.getElementById('owl').addEventListener("click", function(e){
+        //console.log(e)
+        //console.log(e.timeStamp) //gives time of click
+        //console.log(e.clientX)  //gives x-axis location of click
+        //console.log(e.clientY)  //gives y-axis location of click
+        //alert("owl clicked using event listener")
+    },false)
+
+
+    // ------------------  event propogation --------
+    //(default)false => event bubbling : capture event from inside to outside
+    //true => event capturing : capture event from  outside to inside
+
+    document.getElementById('images').addEventListener("click", function(e){
+        console.log("Clicked inside the ul")
+    },false)
+
+    document.getElementById('owl').addEventListener("click", function(e){
+        //event will stop bubbling... means outer element will
+        //not be cliked when inside element is clicked
+        //e.stopPropagation(); 
+
+        console.log("Owl Clicked")
+    },false)
+
+
+
+    //------------- preventdefault ----------
+    document.getElementById("google").addEventListener("click",function(e){
+        e.preventDefault();
+        //e.stopPropagation();
+        console.log("google clicked");
+    },false)
+
+
+
+    //******************* Exrecise *****************
+    //click to remove image
+
+   document.querySelector("#images").addEventListener("click", function(e){
+        console.log(e.target.parentNode);  //gives its parent
+        console.log(e.target.tagName);  //'IMG' or 'A'
+
+        if(e.target.tagName === 'IMG'){
+            let removeIt = e.target.parentNode;
+            removeIt.remove();
+            //removeIt.parentNode.removeChild(removeIt)
+        }
+    },false)
+
+</script>
+</html>

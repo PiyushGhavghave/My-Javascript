@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: #212121;">
+    0	UNSENT	Client has been created. open() not called yet. <br>
+    1	OPENED	open() has been called. <br>
+    2	HEADERS_RECEIVED	send() has been called, and headers and status are available. <br>
+    3	LOADING	Downloading; responseText holds partial data. <br>
+    4	DONE	The operation is complete. <br>
+</body>
+<script>
+    const requestUrl = 'https://api.github.com/users/hiteshchoudhary'
+    //create XMLHttpRequest
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', requestUrl);
+
+    xhr.onreadystatechange = function(){
+        console.log(xhr.readyState);
+        if(xhr.readyState === 4){
+            const data = JSON.parse(xhr.responseText)
+            console.log(typeof data)
+            console.log(data.followers)
+        }
+    }
+
+    //initiate/send request
+    xhr.send()
+
+
+    
+    //==============random user api
+    const requestUrl1 = 'https://randomuser.me/api/'
+
+    //create XMLHttpRequest
+    const xhr1  = new XMLHttpRequest()
+    xhr1.open('GET', requestUrl1)
+
+    //===================== For continues track
+    //function is for, when state chenges... what to do
+    xhr1.onreadystatechange = function(){
+        console.log(xhr1.readyState)
+        if(xhr1.readyState === 4){
+            const data = JSON.parse(this.responseText)
+            console.log(typeof data)   // Object
+            console.log(data.results[0].name.first)
+            console.log(data.results[0].name.last)
+        }
+    }
+    
+    //initiate/send request
+    xhr1.send()
+    
+
+    
+</script>
+
+</html>

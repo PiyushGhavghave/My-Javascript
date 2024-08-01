@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="red">Red</button>
+    <button id="green">Green</button>
+</body>
+
+<script>
+    function makeFunc() {
+        const name = "Piyush";
+        function displayName() {
+            console.log(name);
+        }
+        return displayName;
+    }
+    //it will return entire lexical scope of displayName()
+    const myFunc = makeFunc();
+    myFunc();
+</script>
+
+<script> //============ Practical of Closure
+
+    // document.getElementById('red').onclick = function(){
+    //     document.body.style.backgroundColor = "red"
+    // }
+    // document.getElementById('green').onclick = function(){
+    //     document.body.style.backgroundColor = "green"
+    // }
+
+    //----------- if threre are 100 button... hence use function
+    function handleClick(color){
+        function inner(){
+            document.body.style.backgroundColor = `${color}`
+        }
+        return inner;
+    }
+    // onclick require function defination....
+    // Hence handleClick will give costumized defination
+    document.getElementById('red').onclick = handleClick("red")
+    document.getElementById('green').onclick = handleClick("green")
+</script>
+
+</html>

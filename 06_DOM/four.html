@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM4</title>
+    <style>
+        #bg-black{
+            background-color: #3e3e3e;
+            color: white;
+        }
+    </style>
+</head>
+<body id="bg-black">
+    <ul class="language">
+        <li>javascript</li>
+    </ul>
+</body>
+<script>
+    //----------------- add new element using function
+
+    //1
+    const addli = (el,arr) => {
+        arr.forEach( (langName) => {
+            //create element
+            const newLi = document.createElement(el)
+            //add text
+            newLi.innerHTML = langName
+            //attach to DOM
+            document.querySelector(".language").appendChild(newLi)
+            console.log(newLi)
+        })
+    }
+    const arr = ["python","ruby","c++","java"]
+    addli("li",arr)
+
+    //2  => optimised
+    function addOptiLanguage (langName){
+        //create element
+        const newLi = document.createElement("li")
+        //add new text node
+        newLi.appendChild(document.createTextNode(langName))
+        //attach to DOM
+        document.querySelector(".language").appendChild(newLi)
+    }
+    addOptiLanguage("Golang")
+    addOptiLanguage("java")
+
+    //--------------------- Edit element
+    //1
+    //change innerHTML
+    const secondLang = document.querySelector("li:nth-child(2)")
+    //secondLang.innerHTML = "Mojo"
+
+    //2
+    //create element
+    const newLi = document.createElement('li')
+    newLi.appendChild(document.createTextNode("Mojo"))
+    //replace element
+    secondLang.replaceWith(newLi)
+
+    //3
+    //change outerHTML
+    const firstLang = document.querySelector("li:first-child")
+    firstLang.outerHTML = "<li> typescript</li>"
+
+    //--------------- Remove element
+    const lastlang = document.querySelector("li:last-child").remove()
+
+
+
+    
+    
+</script>
+</html>

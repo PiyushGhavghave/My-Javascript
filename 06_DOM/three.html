@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM3</title>
+    <style>
+        #bg-black{
+            background-color: #3e3e3e;
+            color: white;
+        }
+    </style>
+</head>
+<body id="bg-black">
+    
+</body>
+<script>
+    //---------Create new element in DOM
+    const div1 = document.createElement('div')
+    console.log(div1)
+
+    //---------add attribute/property like id,class
+    div1.className = "main"
+    div1.id = Math.round(Math.random() * 10 +1)
+    div1.title = "generated name"
+
+    //--------- add custom attribute
+    div1.setAttribute("name","generated name")
+
+    //---------add style
+    div1.style.backgroundColor = "green"
+    div1.style.padding = "10px"
+
+    //---------add text
+    //div1.innerText = " Piyush"
+    const mytext = document.createTextNode("Piyush")
+    div1.appendChild(mytext)
+
+    //---------- attach element to document
+    document.body.appendChild(div1)
+    
+    
+</script>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM2</title>
+    <style>
+        #bg-black{
+            background-color: #3e3e3e;
+            color: white;
+        }
+    </style>
+</head>
+<body id="bg-black">
+    <div class="weekday">
+        <div class="day">Monday </div>
+        <div class="day">Tuesday</div>
+        <div class="day">Wednesday</div>
+        <div class="day">Thursday</div>
+    </div>
+</body>
+<script>
+    // -------------- Move from parent to child  (parent --> child)
+    // .children
+    const week = document.querySelector(".weekday")
+    console.log(week)
+    console.log(week.children)   //gives HTMLcollection
+    console.log(week.children[1].innerText)  //Tuesday
+    for(let i=0; i< week.children.length ;i++){
+        console.log(week.children[i].innerText)
+    }
+    // .firstElementChild  and .lastElementChild
+    week.children[1].style.color = "orange"
+    console.log(week.firstElementChild)  // target first element
+    console.log(week.lastElementChild)  // target last element
+
+
+    // -------------- Move from child to parent  (child --> parent)
+    const day1 = document.querySelector(".day")
+    console.log(day1)
+    console.log(day1.parentElement)   //target parent
+    console.log(day1.parentElement.children[2].innerText)   //target "wednesday"
+    console.log(day1.nextElementSibling)   //target next simbling
+
+    //------------- Node list (complex tree structure)
+    console.log("Nodes :", week.childNodes)
+
+
+
+
+</script>
+</html>
