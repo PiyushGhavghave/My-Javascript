@@ -14,13 +14,13 @@ const user = {
         console.log(`${name}`);
     }
 }
-console.log(Object.getOwnPropertyDescriptor(user, 'name'))
+console.log(Object.getOwnPropertyDescriptor(user, 'email'))
 
-Object.defineProperty(user,'name', {
+Object.defineProperty(user,'email', {
     writable : false,
     enumerable : false
 })
-console.log(Object.getOwnPropertyDescriptor(user, 'name'))
+console.log(Object.getOwnPropertyDescriptor(user, 'email'))
 
 //try to iterate over name
 for (const key in user) {
