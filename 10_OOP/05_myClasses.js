@@ -20,7 +20,7 @@ console.log(user1.changeUserName());
 
 
 
-//--------------------------- Another way (behind the scene)
+// --------------------------- Another way (behind the scene)
 
 // constuctor function
 function NewUser(username, email, password){
